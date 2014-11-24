@@ -1,7 +1,7 @@
 Youtube-Music-Request-Portal
 ============================
 <h2>The idea of the portal is the following-</h2>
-There is one person in the room who has his / her laptop connected to the speakers. However, others in the room would also like to play songs of their choice. They can add the Youtube URL of the song they would like to request on the portal, that song is added to the playlist.
+There is one person in the room who has his / her laptop connected to the speakers. However, others in the room would also like to play songs of their choice. They can add the Youtube URL of the song they would like to request on the portal to add that song to the playlist.
 <br>
 <h2>How it works-</h2>
 There are three files -<br>
