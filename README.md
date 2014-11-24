@@ -19,7 +19,7 @@ The python script is run on the computer of the person on whose laptop the speak
 <h2>How to get it to work-</h2>
 Configure the address of the "playlist.txt" file in the python script to the URL you have hosted it on. The "playlist.txt" file needs to be given 766 / 777 permissions.
 <br>
-<h2>Next up-</h2><br>
+<h2>Next up-</h2>
 -Add CSS<br>
 -Find a way around using a pulicly writable file (security issue)<br>
 -Configure the python script to open the next song exactly when the song ends (currently it is assumed that the video always buffers before it loads) 
