@@ -17,14 +17,14 @@ The "playlist.txt" file has four fields for each song. They are-<br>
 The python script is run on the computer of the person on whose laptop the speakers are connected. It will run continuously in a terminal session and watch for the playlist.txt file. All Youtube URLs will be opened one after the other (the duration field is used to decide when to open the next video + a buffer is added).
 <br>
 <h2>How to get it to work-</h2>
-Host the PHP file and the "playlist.txt" file on a web server.
-Configure the address of the "playlist.txt" file in the python script to the URL you have hosted it on.
-Execute the python script on terminal.
+Host the PHP file and the "playlist.txt" file on a web server.<br>
+Configure the address of the "playlist.txt" file in the python script to the URL you have hosted it on.<br>
+Execute the python script on terminal.<br>
 The "playlist.txt" file needs to be given 766 / 777 permissions.
 <br>
 <h2>Next up-</h2>
 -Add CSS<br>
 -Find a way around using a pulicly writable file (security issue)<br>
--Configure the python script to open the next song exactly when the song ends (currently it is assumed that the video always buffers before it loads)
--Autoremove somgs from the playlist that have already been played - thus implement a "currently playing"
--Check that no person enters the same song twice (a song shouldn't come twice in the queue). Give appropriate errors.
+-Configure the python script to open the next song exactly when the song ends (currently it is assumed that the video always buffers before it loads)<br>
+-Autoremove songs from the playlist that have already been played - thus implement a "currently playing"<br>
+-Check that no person enters the same song twice (a song shouldn't come twice in the queue). Give appropriate errors.<br>
