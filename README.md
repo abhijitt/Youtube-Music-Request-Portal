@@ -22,4 +22,6 @@ Configure the address of the "playlist.txt" file in the python script to the URL
 <h2>Next up-</h2>
 -Add CSS<br>
 -Find a way around using a pulicly writable file (security issue)<br>
--Configure the python script to open the next song exactly when the song ends (currently it is assumed that the video always buffers before it loads) 
+-Configure the python script to open the next song exactly when the song ends (currently it is assumed that the video always buffers before it loads)
+-Autoremove somgs from the playlist that have already been played - thus implement a "currently playing"
+-Check that no person enters the same song twice (a song shouldn't come twice in the queue). Give appropriate errors.
