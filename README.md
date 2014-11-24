@@ -23,8 +23,9 @@ Execute the python script on terminal.<br>
 The "playlist.txt" file needs to be given 766 / 777 permissions.
 <br>
 <h2>Next up-</h2>
--Add CSS<br>
--Find a way around using a pulicly writable file (security issue)<br>
--Configure the python script to open the next song exactly when the song ends (currently it is assumed that the video always buffers before it loads)<br>
--Autoremove songs from the playlist that have already been played - thus implement a "currently playing"<br>
--Check that no person enters the same song twice (a song shouldn't come twice in the queue). Give appropriate errors.<br>
+<ul>
+<li>Add CSS
+<li>Find a way around using a pulicly writable file (security issue)
+<li>Configure the python script to open the next song exactly when the song ends (currently it is assumed that the video always buffers before it loads)
+<li>Autoremove songs from the playlist that have already been played - thus implement a "currently playing"
+<li>Check that no person enters the same song twice (a song shouldn't come twice in the queue). Give appropriate errors.
