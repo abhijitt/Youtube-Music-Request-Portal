@@ -12,18 +12,38 @@
     $fh = fopen($file, "r") or die('Could not open file!');
     $data = fread($fh, filesize($file)) or die('Could not read file!');
     fclose($fh);
-    if ($_POST["name"] !== NULL) {                 // Adds POST request URL to the file 
-        $data = $data . "\n" . $_POST["name"];
-        $temp = explode("?v=", $_POST["name"]);    // Gets the video ID
-        $vidID= substr($temp[1], 0, 11);
-        $url = "http://gdata.youtube.com/feeds/api/videos/" . $vidID;  // The Youtube API
-        $doc = new DOMDocument;
-        $doc->load($url);
-        $title = $doc->getElementsByTagName("title")->item(0)->nodeValue;  // Gets the title and duration from the API 
-        $duration = $doc->getElementsByTagName('duration')->item(0)->getAttribute('seconds');
-        $data = $data . "\n" . $vidID . "\n" . $title . "\n" . $duration;  // Adds them to the $data variable that will later be written to the file
-    }
+    
+    
+    $ldap_id=$_POST["id"];
+    $ldap_password=$_POST["pass"];
 
+    $ds = ldap_connect("ldap.iitb.ac.in") or die("Unable to connect to LDAP server. Please try again later.");
+    // if($ldap_id=='') die("You have not entered any LDAP ID. Please go back and fill it up.");
+    // if($ldap_password=='') die("You have not entered any password. Please go back and fill it up.");
+    $sr = ldap_search($ds,"dc=iitb,dc=ac,dc=in","(uid=$ldap_id)");
+    $info = ldap_get_entries($ds, $sr);
+        $roll = $info[0]["employeenumber"][0];
+        //print_r($info);
+    $ldap_id = $info[0]['dn'];
+    if(@ldap_bind($ds,$ldap_id,$ldap_password)){
+        if ($_POST["name"] !== NULL) {                 // Adds POST request URL to the file 
+            $data = $data . "\n" . $_POST["name"];
+            $temp = explode("?v=", $_POST["name"]);    // Gets the video ID
+            $vidID= substr($temp[1], 0, 11);
+            $url = "http://gdata.youtube.com/feeds/api/videos/" . $vidID;  // The Youtube API
+            $doc = new DOMDocument;
+            $doc->load($url);
+            $title = $doc->getElementsByTagName("title")->item(0)->nodeValue;  // Gets the title and duration from the API 
+            $duration = $doc->getElementsByTagName('duration')->item(0)->getAttribute('seconds');
+            $data = $data . "\n" . $vidID . "\n" . $title . "\n" . $duration;  // Adds them to the $data variable that will later be written to the file
+            echo "Authentication Successful\n";
+        }
+    }
+    else
+    {
+        echo "Authentication Failed\n";
+    }
+        
     $pieces = explode("\n", $data);
     $x=1;
     foreach ($pieces as $value) {
@@ -37,6 +57,8 @@
     ?>
 		<form action="" method="post">
 		Youtube URL: <input type="text" name="name"><br>
+        LDAP ID: <input type="text" name="id"><br>
+        LDAP Password: <input type="password" name="pass"><br>
 		<input type="submit">
 		</form>
 	</body>
