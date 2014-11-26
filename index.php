@@ -35,7 +35,7 @@
             $doc->load($url);
             $title = $doc->getElementsByTagName("title")->item(0)->nodeValue;  // Gets the title and duration from the API 
             $duration = $doc->getElementsByTagName('duration')->item(0)->getAttribute('seconds');
-            $data = $data . "\n" . $vidID . "\n" . $title . "\n" . $duration;  // Adds them to the $data variable that will later be written to the file
+            $data = $data . "\n" . $vidID . "\n" . $title . "\n" . $_POST["id"] . "\n" . $duration;  // Adds them to the $data variable that will later be written to the file
             echo "Authentication Successful\n";
         }
     }
@@ -47,7 +47,8 @@
     $pieces = explode("\n", $data);
     $x=1;
     foreach ($pieces as $value) {
-        if ($x%4 === 3 ) echo "\n\t\t\t<li> $value";  // Echoes every third line in the file i.e. the song names
+        if ($x%5 === 3 ) echo "\n\t\t\t<li> $value";  // Echoes every third line in the file i.e. the song names
+        if ($x%5 === 4 ) echo "<em> $value </em>"; //Echoes the LDAP of the person who requested the song
         $x++;
     }
     echo "\n\t\t</ul>\n";
